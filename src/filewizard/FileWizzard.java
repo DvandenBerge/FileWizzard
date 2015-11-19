@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author Dan
  */
-public class FileWizard {
+public class FileWizzard {
 
     //Can be either a reader or writer
     private FileReaderStrategy frs;
@@ -49,7 +49,7 @@ public class FileWizard {
     
     public static void main(String[] args) {
         
-        FileWizard fw = new FileWizard();
+        FileWizzard fw = new FileWizzard();
         File readFile=new File("C:" + File.separatorChar + "temp" + File.separatorChar + "garageTotals.txt");
         //Kinda like the decorator pattern?
         FileReaderStrategy frs=new TextFileReader(new CSVFormatter());
