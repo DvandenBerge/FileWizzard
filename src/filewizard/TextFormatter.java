@@ -9,8 +9,8 @@ import java.util.List;
  */
 public interface TextFormatter {
     //Writing
-    public ArrayList decode(String data);
-    public ArrayList getFormattedText();
+    public List decode(String data);
+    public List getFormattedText();
     
-    public String encode(String data);
+    public List encode(String data);
 }

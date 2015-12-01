@@ -21,7 +21,7 @@ public class TextFileReader implements FileReaderStrategy{
     }
     
     @Override
-    public ArrayList<List> readFile(File inputFile) {
+    public List readFile(File inputFile) {
         try{
             BufferedReader reader = new BufferedReader(new FileReader(inputFile));
             String line=reader.readLine();
@@ -29,7 +29,7 @@ public class TextFileReader implements FileReaderStrategy{
                 formatter.decode(line);
                 line=reader.readLine();
             }
-        }catch(IOException e){
+        }catch(IOException ioe){
             System.out.println("File cannot be read/opened!");
         }
         return formatter.getFormattedText();

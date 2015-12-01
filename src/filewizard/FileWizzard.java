@@ -10,8 +10,8 @@ import java.util.List;
  */
 public class FileWizzard {
 
-    //Can be either a reader or writer
     private FileReaderStrategy frs;
+    private FileWriterStrategy fws;
     //Can be a readable/writable file. Not really anything else
     private File inputFile;
 
@@ -22,6 +22,16 @@ public class FileWizzard {
         this.frs = frs;
     }
 
+    public FileWriterStrategy getFws() {
+        return fws;
+    }
+
+    public void setFws(FileWriterStrategy fws) {
+        this.fws = fws;
+    }
+
+    
+    
     public File getInputFile() {
         return inputFile;
     }
@@ -35,9 +45,9 @@ public class FileWizzard {
      * maybe add another strategy object??
      */
     public void readFile(){
-        ArrayList<List> entries=frs.readFile(inputFile);
+        List entries=frs.readFile(inputFile);
         for(int i=0;i<entries.size();i++){
-            List entry=entries.get(i);
+            List entry=(List)entries.get(i);
             for(Object l:entry){
                 l=(String)l;
                 System.out.print(l+" ");
@@ -47,17 +57,21 @@ public class FileWizzard {
         }
     }
     
+    public void writeFile(){
+        fws.writeToFile(inputFile);
+    }
+    
     public static void main(String[] args) {
         
-        FileWizzard fw = new FileWizzard();
-        File readFile=new File("C:" + File.separatorChar + "temp" + File.separatorChar + "garageTotals.txt");
-        //Kinda like the decorator pattern?
-        FileReaderStrategy frs=new TextFileReader(new CSVFormatter());
-        
-        fw.setFrs(frs);
-        fw.setInputFile(readFile);
-        
-        fw.readFile();
+          FileWizzard fw = new FileWizzard();
+          File readFile=new File("C:" + File.separatorChar + "temp" + File.separatorChar + "garageTotals.txt");
+          FileReaderStrategy frs=new TextFileReader(new CSVFormatter());        
+          fw.setFrs(frs);
+          fw.setInputFile(readFile);        
+          //fw.readFile();
+          FileWriterStrategy fws=new TextFileWriter(new CSVFormatter());
+          fw.setFws(fws);
+          fw.writeFile();
     }
     
 }

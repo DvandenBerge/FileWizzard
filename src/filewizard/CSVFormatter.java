@@ -17,7 +17,7 @@ public class CSVFormatter implements TextFormatter{
     }
     
     @Override
-    public ArrayList decode(String data) {
+    public List decode(String data) {
         String[] dataParts=data.split(",");
         List<String> newEntry=new Vector();
         for(int i=0;i<dataParts.length;i++){
@@ -28,16 +28,22 @@ public class CSVFormatter implements TextFormatter{
     }
     
     @Override
-    public ArrayList getFormattedText(){
+    public List getFormattedText(){
         return formattedArray;
     }
     
-    public String encode(String data){
+    @Override
+    public List encode(String data){
         String[] dataParts=data.split(" ");
-        String line="";
+        List<String> newEntry=new Vector();
         for(int i=0;i<dataParts.length;i++){
-            line+=dataParts[i]+",";
+            newEntry.add(dataParts[i]+",");
         }
-        return line;
+        formattedArray.add(newEntry);
+        return formattedArray;
+    }
+    
+    public void clearFormattedArray(){
+        formattedArray.clear();
     }
 }

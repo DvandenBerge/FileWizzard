@@ -9,5 +9,5 @@ import java.util.List;
  * @author Dan
  */
 public interface FileReaderStrategy {
-    public abstract ArrayList readFile(File inputFile);
+    public abstract List readFile(File inputFile);
 }
