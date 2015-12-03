@@ -68,7 +68,7 @@ public class FileWizzard {
           FileReaderStrategy frs=new TextFileReader(new CSVFormatter());        
           fw.setFrs(frs);
           fw.setInputFile(readFile);        
-          //fw.readFile();
+          fw.readFile();
           FileWriterStrategy fws=new TextFileWriter(new CSVFormatter());
           fw.setFws(fws);
           fw.writeFile();

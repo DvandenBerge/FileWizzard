@@ -12,5 +12,6 @@ public interface TextFormatter {
     public List decode(String data);
     public List getFormattedText();
     
-    public List encode(String data);
+    public String encode(String data);
+    public void clearOutputStream();
 }

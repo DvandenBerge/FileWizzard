@@ -11,9 +11,10 @@ import java.util.Vector;
 public class CSVFormatter implements TextFormatter{
 
     private ArrayList<List> formattedArray;
-    
+    private String outputStream;
     public CSVFormatter(){
         this.formattedArray=new ArrayList();
+        this.outputStream="";
     }
     
     @Override
@@ -33,17 +34,15 @@ public class CSVFormatter implements TextFormatter{
     }
     
     @Override
-    public List encode(String data){
+    public String encode(String data){
         String[] dataParts=data.split(" ");
-        List<String> newEntry=new Vector();
-        for(int i=0;i<dataParts.length;i++){
-            newEntry.add(dataParts[i]+",");
+        for(String s:dataParts){
+            outputStream+=s+",";
         }
-        formattedArray.add(newEntry);
-        return formattedArray;
+        return outputStream;
     }
-    
-    public void clearFormattedArray(){
-        formattedArray.clear();
+   
+    public void clearOutputStream(){
+        outputStream="";
     }
 }

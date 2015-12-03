@@ -29,6 +29,7 @@ public class TextFileReader implements FileReaderStrategy{
                 formatter.decode(line);
                 line=reader.readLine();
             }
+            reader.close();
         }catch(IOException ioe){
             System.out.println("File cannot be read/opened!");
         }
